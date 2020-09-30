@@ -1,7 +1,22 @@
 import React, { useState, useMemo } from "react";
 import { useTable, useFilters, useSortBy, usePagination } from "react-table";
 
+//Custom checkbox for picking the columns of the table
+const IndeterminateCheckbox = React.forwardRef(
+  ({ indeterminate, ...rest }, ref) => {
+    const defaultRef = React.useRef();
+    const resolvedRef = ref || defaultRef;
+
+    React.useEffect(() => {
+      resolvedRef.current.indeterminate = indeterminate;
+    }, [resolvedRef, indeterminate]);
+
+    return <input type="checkbox" ref={resolvedRef} {...rest} />;
+  }
+);
+
 export default function Table({ data }) {
+  //Create a react Memo for the columns of the table
   const columns = useMemo(
     () => [
       {
@@ -104,7 +119,7 @@ export default function Table({ data }) {
     ],
     []
   );
-  const [filterInput, setFilterInput] = useState("");
+  //Init table parameters with useTable hook
   const {
     getTableProps,
     getTableBodyProps,
@@ -119,6 +134,8 @@ export default function Table({ data }) {
     nextPage,
     previousPage,
     setPageSize,
+    allColumns,
+    getToggleHideAllColumnsProps,
     state: { pageIndex, pageSize },
     setFilter,
   } = useTable(
@@ -131,7 +148,9 @@ export default function Table({ data }) {
     useSortBy,
     usePagination
   );
+  const [filterInput, setFilterInput] = useState("");
 
+  //Filter handler for service ID filtering
   const handleFilterChange = (e) => {
     const value = e.target.value || undefined;
     setFilter("service_id", value);
@@ -228,6 +247,21 @@ export default function Table({ data }) {
         onChange={handleFilterChange}
         placeholder={"Search service id"}
       />
+      <div className="column-selector">
+        <div>
+          <IndeterminateCheckbox {...getToggleHideAllColumnsProps()} /> Toggle
+          All
+        </div>
+        {allColumns.map((column) => (
+          <div key={column.id}>
+            <label>
+              <input type="checkbox" {...column.getToggleHiddenProps()} />{" "}
+              {column.id}
+            </label>
+          </div>
+        ))}
+        <br />
+      </div>
     </>
   ) : (
     <></>

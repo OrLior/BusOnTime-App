@@ -4,6 +4,7 @@ import Select from "./Select";
 const API_ADDRESS = "http://127.0.0.1:4999/";
 
 const Form = ({ setData, setDataLoaded, setDataError }) => {
+  //Create a react Memo for all available operators
   const operatorList = useMemo(
     () => [
       { value: 2, name: "רכבת ישראל" },
@@ -46,20 +47,18 @@ const Form = ({ setData, setDataLoaded, setDataError }) => {
     []
   );
 
+  //Set up function states for all variables we need in the form
   const [date, setDate] = useState(null);
   const [operator, setOperator] = useState(null);
   const [line, setLine] = useState(null);
   const [routeMKT, setRouteMKT] = useState(null);
   const [direction, setDirection] = useState(null);
-
   const [linesList, setLinesList] = useState(null);
   const [linesListError, setLinesListError] = useState(null);
   const [linesListLoaded, setLinesListLoaded] = useState(false);
-
   const [routeMKTList, setRouteMKTList] = useState(null);
   const [routeMKTListError, setRouteListMKTError] = useState(null);
   const [routeMKTListLoaded, setRouteMKTListLoaded] = useState(false);
-
   const [directionsList, setDirectionsList] = useState(null);
   const [directionsListError, setDirectionsListError] = useState(null);
   const [directionsListLoaded, setDirectionsListLoaded] = useState(false);
