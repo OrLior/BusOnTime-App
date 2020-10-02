@@ -8,16 +8,16 @@ function Nav() {
       <img src={Logo} alt="logo" className="logo" />
       <ul className="nav-links">
         <Link className="nav-links" to="/">
-          <li>Page 1</li>
+          <li>Search Trips</li>
         </Link>
         <Link className="nav-links" to="/Page2">
-          <li>Page 2</li>
+          <li>General Stats</li>
         </Link>
         <Link className="nav-links" to="/Page3">
-          <li>Page 3</li>
+          <li>Line Cccuracy</li>
         </Link>
         <Link className="nav-links" to="/Page4">
-          <li>Page 4</li>
+          <li>Delay Spread</li>
         </Link>
       </ul>
     </nav>
