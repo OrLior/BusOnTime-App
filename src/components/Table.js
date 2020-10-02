@@ -15,110 +15,7 @@ const IndeterminateCheckbox = React.forwardRef(
   }
 );
 
-export default function Table({ data }) {
-  //Create a react Memo for the columns of the table
-  const columns = useMemo(
-    () => [
-      {
-        Header: "Service ID",
-        accessor: "service_id",
-      },
-      {
-        Header: "Route ID",
-        accessor: "route_id",
-      },
-      {
-        Header: "Direction",
-        accessor: "route_direction",
-      },
-      {
-        Header: "Route Alternative",
-        accessor: "route_alternative",
-        Cell: ({ cell: { value } }) => {
-          return <>{value === "0" || value === "#" ? "ראשית" : value}</>;
-        },
-      },
-      {
-        Header: "Bus ID",
-        accessor: "bus_id",
-      },
-      {
-        Header: "Planned Start Date",
-        accessor: "planned_start_date",
-      },
-      {
-        Header: "Planned Start Time",
-        accessor: "planned_start_time",
-      },
-      {
-        Header: "Departed",
-        accessor: "departed",
-        Cell: ({ cell: { value } }) => {
-          return <>{value ? "Yes" : "No"}</>;
-        },
-      },
-      {
-        Header: "Departure Delay",
-        accessor: "departure_delay",
-      },
-      {
-        Header: "Notes",
-        accessor: "notes",
-      },
-      {
-        Header: "Route Long Name",
-        accessor: "route_long_name",
-      },
-      {
-        Header: "Start Stop ID",
-        accessor: "start_stop_id",
-      },
-      {
-        Header: "Start Stop City",
-        accessor: "start_stop_city",
-      },
-      {
-        Header: "Start Stop Name",
-        accessor: "start_stop_name",
-      },
-      {
-        Header: "Num Stops",
-        accessor: "num_stops",
-      },
-      {
-        Header: "Num Trips",
-        accessor: "num_trips",
-      },
-      {
-        Header: "Line Type Desc",
-        accessor: "line_type_desc",
-      },
-      {
-        Header: "Cluster Name",
-        accessor: "cluster_name",
-      },
-      {
-        Header: "Cluster Sub Desc",
-        accessor: "cluster_sub_desc",
-        Cell: ({ cell: { value } }) => {
-          return <>{value ? `${value}` : "N/A"}</>;
-        },
-      },
-      {
-        Header: "Route MKT",
-        accessor: "route_mkt",
-      },
-      {
-        Header: "Route Type",
-        accessor: "route_type",
-      },
-      {
-        Header: "File Date",
-        accessor: "file_date",
-      },
-    ],
-    []
-  );
+export default function Table({ columns, data }) {
   //Init table parameters with useTable hook
   const {
     getTableProps,
@@ -264,6 +161,8 @@ export default function Table({ data }) {
       </div>
     </>
   ) : (
-    <></>
+    <>
+      <h1>No Relevant Data To Show</h1>
+    </>
   );
 }
