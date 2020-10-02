@@ -21,7 +21,7 @@ header {
 }
 
 #reactTable > table {
-  width: 200%;
+  width: 100%;
   height: 100%;
 }
 table {
@@ -146,4 +146,76 @@ form input:hover {
   top: 0;
   transform: translateX(50%);
   z-index: 1;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-height: 12vh;
+  background: #fd6358bd;
+  color: white;
+}
+
+.nav-links {
+  width: 40%;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-decoration: none;
+  list-style: none;
+  color: white;
+}
+
+.logo {
+  width: 40%;
+  height: 2%;
+  object-fit: scale-down;
+}
+
+.toggle-container {
+  width: 106px;
+  background-color: #c4c4c4;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 3px;
+  padding: 2px;
+  height: 44px;
+  position: relative;
+}
+
+.dialog-button {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #ff6f47;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 18px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  min-width: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  min-width: unset;
+  border-radius: 3px;
+  box-sizing: border-box;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  position: absolute;
+  left: 34px;
+  transition: all 0.3s ease;
+}
+
+.disabled {
+  background-color: #fda085;
+  left: 3px;
+}
+
+.rare-trips-checkbox-label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
 }
