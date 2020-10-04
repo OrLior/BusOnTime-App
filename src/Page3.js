@@ -2,6 +2,7 @@ import React, { useState, useMemo, useEffect } from "react";
 import Select from "./components/Select";
 import { operators } from "./resources/operators";
 import { clusters } from "./resources/clusters";
+import { dates } from "./resources/dates";
 import SubmitButton from "./components/SubmitButton";
 import ToggleButton from "./components/ToggleButton";
 import ResetButton from "./components/ResetButton";
@@ -15,15 +16,17 @@ const Page3 = () => {
   const [cluster, setCluster] = useState(null);
   const [operatorList, setOperatorList] = useState(operators);
   const [clusterList, setClusterList] = useState(clusters);
+  const [datesList, setDatesList] = useState(dates);
   const [filterOption, setFilterOption] = useState(true);
   const [categoryOption, setCategoryOption] = useState(true);
   const [data, setData] = useState(null);
   const [dataError, setDataError] = useState(null);
   const [isDataLoaded, setDataLoaded] = useState(false);
+
   const columns = useMemo(
     () => [
       {
-        Header: "Agency",
+        Header: "Operator",
         accessor: "agency_id",
         Cell: ({ cell: { value } }) => {
           return (
@@ -53,11 +56,11 @@ const Page3 = () => {
         },
       },
       {
-        Header: "Route Short Name",
+        Header: "Line Number",
         accessor: "route_short_name",
       },
       {
-        Header: "Route Long Name",
+        Header: "Route Description",
         accessor: "route_long_name",
       },
       {
@@ -96,11 +99,13 @@ const Page3 = () => {
 
   const getData = async () => {
     await fetch(
-      `${API_ADDRESS}stats/byLine?date=${date ? date : "all"}&ignoreRareTrips=${
-        filterOption ? "true" : "false"
-      }&desc=${categoryOption ? "true" : "false"}&oper=${
-        operator ? operator : "all"
-      }&cluster=${cluster ? cluster : "all"}`
+      `${API_ADDRESS}stats/byLine/?date=${
+        date ? date : "all"
+      }&ignoreRareTrips=${filterOption ? "true" : "false"}&desc=${
+        categoryOption ? "true" : "false"
+      }&oper=${operator ? operator : "all"}&cluster=${
+        cluster ? cluster : "all"
+      }`
     )
       .then((res) => res.json())
       .then(
@@ -116,13 +121,14 @@ const Page3 = () => {
   };
 
   const resetHandler = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     setDate(null);
     setData(null);
     setCluster(null);
     setOperator(null);
     setCategoryOption(true);
     setFilterOption(true);
+    getData();
   };
 
   useEffect(() => {
@@ -152,8 +158,8 @@ const Page3 = () => {
         <input
           onChange={inputDateHandler}
           type="date"
-          min="2020-08-01"
-          max="2020-08-31"
+          min={datesList[0].start}
+          max={datesList[0].end}
         />
         <Select
           setSelected={setOperator}
@@ -171,6 +177,7 @@ const Page3 = () => {
         <ResetButton submitHandler={resetHandler} />
       </form>
       {data && <Table columns={columns} data={data} />}
+      {/* USED FOR DEBUGGING */}
       <h1>Date: {date ? date : "None"}</h1>
       <h1>Operator: {operator ? operator : "None"}</h1>
       <h1>Cluster: {cluster ? cluster : "None"}</h1>

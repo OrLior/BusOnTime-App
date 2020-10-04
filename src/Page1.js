@@ -10,7 +10,7 @@ function Page1() {
   const columns = useMemo(
     () => [
       {
-        Header: "Service ID",
+        Header: "Trip ID",
         accessor: "service_id",
       },
       {
@@ -41,7 +41,7 @@ function Page1() {
         accessor: "planned_start_time",
       },
       {
-        Header: "Departed",
+        Header: "Departed?",
         accessor: "departed",
         Cell: ({ cell: { value } }) => {
           return <>{value ? "Yes" : "No"}</>;
@@ -50,13 +50,16 @@ function Page1() {
       {
         Header: "Departure Delay",
         accessor: "departure_delay",
+        Cell: ({ cell: { value } }) => {
+          return <>{value >= 0 ? value + " mins" : "N/A"}</>;
+        },
       },
       {
         Header: "Notes",
         accessor: "notes",
       },
       {
-        Header: "Route Long Name",
+        Header: "Detailed Route Description",
         accessor: "route_long_name",
       },
       {
@@ -76,7 +79,7 @@ function Page1() {
         accessor: "num_stops",
       },
       {
-        Header: "Num Trips",
+        Header: "Daily Trips",
         accessor: "num_trips",
       },
       {

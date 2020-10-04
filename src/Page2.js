@@ -5,6 +5,7 @@ import ResetButton from "./components/ResetButton";
 import Table from "./components/Table";
 import { operators } from "./resources/operators";
 import { clusters } from "./resources/clusters";
+import { dates } from "./resources/dates";
 
 const API_ADDRESS = "http://127.0.0.1:4999/";
 
@@ -14,12 +15,13 @@ const Page2 = () => {
   const [data, setData] = useState(null);
   const [operatorsList, setOperatorsList] = useState(operators);
   const [clustersList, setClustersList] = useState(clusters);
+  const [datesList, setDatesList] = useState(dates);
   const [dataError, setDataError] = useState(null);
   const [isDataLoaded, setDataLoaded] = useState(false);
   const operatorColumns = useMemo(
     () => [
       {
-        Header: "Agency",
+        Header: "Operator",
         accessor: "agency_id",
         Cell: ({ cell: { value } }) => {
           return (
@@ -81,20 +83,21 @@ const Page2 = () => {
   };
 
   const resetHandler = (e) => {
-    e.preventDefault();
-
+    setCategoryOption(true);
     setDate(null);
     setData(null);
+    getData();
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
     getData();
+    console.log(data);
   };
 
   const getData = async () => {
     await fetch(
-      `${API_ADDRESS}stats/main?by=${categoryOption ? "oper" : "clust"}&date=${
+      `${API_ADDRESS}stats/main/?by=${categoryOption ? "oper" : "clust"}&date=${
         date ? date : "all"
       }`
     )
@@ -128,19 +131,23 @@ const Page2 = () => {
         <input
           onChange={inputDateHandler}
           type="date"
-          min="2020-08-01"
-          max="2020-08-31"
+          min={datesList[0].start}
+          max={datesList[0].end}
         />
         <SubmitButton submitHandler={submitHandler} />
         <ResetButton submitHandler={resetHandler} />
       </form>
-
-      {data && (
+      {data ? (
         <Table
           columns={categoryOption ? operatorColumns : clusterColumns}
           data={data}
         />
+      ) : (
+        <>
+          <p>No Relevant Data To Show</p>
+        </>
       )}
+      {/* USED FOR DEBUGGING */}
       <h1>Date: {date ? date : "None"}</h1>
       <h1>Category: {categoryOption ? "By Operator" : "By Cluster"}</h1>
     </div>

@@ -2,7 +2,7 @@ import React from "react";
 import Logo from "../resources/logo.png";
 import { Link } from "react-router-dom";
 
-function Nav() {
+const Nav = () => {
   return (
     <nav className="nav">
       <img src={Logo} alt="logo" className="logo" />
@@ -14,7 +14,7 @@ function Nav() {
           <li>General Stats</li>
         </Link>
         <Link className="nav-links" to="/Page3">
-          <li>Line Cccuracy</li>
+          <li>Line Accuracy</li>
         </Link>
         <Link className="nav-links" to="/Page4">
           <li>Delay Spread</li>
@@ -22,6 +22,6 @@ function Nav() {
       </ul>
     </nav>
   );
-}
+};
 
 export default Nav;

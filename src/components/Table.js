@@ -54,7 +54,7 @@ export default function Table({ columns, data }) {
     setFilterInput(value);
   };
 
-  return data ? (
+  return data !== [] ? (
     <>
       <div id="reactTable">
         <table {...getTableProps()}>
@@ -162,7 +162,9 @@ export default function Table({ columns, data }) {
     </>
   ) : (
     <>
-      <h1>No Relevant Data To Show</h1>
+      <div>
+        <p>No Relevant Data To Show</p>
+      </div>
     </>
   );
 }
