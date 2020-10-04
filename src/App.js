@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "./App.css";
 import Nav from "./components/Nav";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Page1 from "./Page1";
 import Page2 from "./Page2";
 import Page3 from "./Page3";
 import Page4 from "./Page4";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-function App() {
+const App = () => {
   return (
     <Router>
       <div className="App">
@@ -21,6 +21,6 @@ function App() {
       </div>
     </Router>
   );
-}
+};
 
 export default App;

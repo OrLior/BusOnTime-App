@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from "react";
 import Select from "./Select";
 import { operators } from "../resources/operators";
+import { dates } from "../resources/dates";
 import SubmitButton from "./SubmitButton";
 
 const API_ADDRESS = "http://127.0.0.1:4999/";
@@ -13,6 +14,7 @@ const MultiStepForm = ({ setData, setDataLoaded, setDataError }) => {
   const [routeMKT, setRouteMKT] = useState(null);
   const [direction, setDirection] = useState(null);
   const [operatorList, setOperatorList] = useState(operators);
+  const [datesList, setDatesList] = useState(dates);
   const [linesList, setLinesList] = useState(null);
   const [linesListError, setLinesListError] = useState(null);
   const [linesListLoaded, setLinesListLoaded] = useState(false);
@@ -116,8 +118,8 @@ const MultiStepForm = ({ setData, setDataLoaded, setDataError }) => {
       <input
         onChange={inputDateHandler}
         type="date"
-        min="2020-08-01"
-        max="2020-08-31"
+        min={datesList[0].start}
+        max={datesList[0].end}
       />
       <Select
         setSelected={setOperator}
