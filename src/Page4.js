@@ -6,7 +6,7 @@ import { operators } from "./resources/operators";
 import SubmitButton from "./components/SubmitButton";
 import ResetButton from "./components/ResetButton";
 import Table from "./components/Table";
-import { dates } from "./resources/dates";
+// import { dates } from "./resources/dates";
 
 const API_ADDRESS = "http://127.0.0.1:4999/";
 
@@ -15,20 +15,20 @@ const API_ADDRESS = "http://127.0.0.1:4999/";
 // ANY COMMENTED OUT LINES ARE TO BE USED AS SOON AS THERE IS SUPPORT FOR FETCHING DATA WITH ADDITIONAL PARAMTERES'
 // UNTIL THEN THEY CAN BE IGNORED ENTIRELY
 const Page4 = () => {
-  const [date, setDate] = useState(null);
+  const [data, setData] = useState(null);
+  const [dataError, setDataError] = useState(null);
+  const [isDataLoaded, setDataLoaded] = useState(false);
   const [operator, setOperator] = useState(null);
-  const [cluster, setCluster] = useState(null);
-  // const [line, setLine] = useState(null);
   const [operatorList, setOperatorList] = useState(operators);
+  // const [date, setDate] = useState(null);
+  // const [cluster, setCluster] = useState(null);
+  // const [line, setLine] = useState(null);
   // const [clusterList, setClusterList] = useState(clusters);
   // const [categoryOption, setCategoryOption] = useState(true);
   // const [linesList, setLinesList] = useState(null);
   // const [linesListError, setLinesListError] = useState(null);
   // const [linesListLoaded, setLinesListLoaded] = useState(false);
-  const [data, setData] = useState(null);
-  const [dataError, setDataError] = useState(null);
-  const [datesList, setDatesList] = useState(dates);
-  const [isDataLoaded, setDataLoaded] = useState(false);
+  // const [datesList, setDatesList] = useState(dates);
 
   // const inputDateHandler = (event) => {
   //   event.preventDefault();
@@ -165,8 +165,8 @@ const Page4 = () => {
             name="Lines"
           />
         )} */}
-        <SubmitButton submitHandler={submitHandler} />
-        <ResetButton submitHandler={resetHandler} />
+        {/* <SubmitButton submitHandler={submitHandler} /> */}
+        {/* <ResetButton submitHandler={resetHandler} /> */}
       </form>
       {data && <Table columns={columns} data={data} />}
       {/* USED FOR DEBUGGING */}
