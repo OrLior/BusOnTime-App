@@ -2,7 +2,7 @@ import React, { useState, useMemo } from "react";
 import MultiStepForm from "./components/MultiStepForm";
 import Table from "./components/Table";
 
-function Page1() {
+const Page1 = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -123,6 +123,6 @@ function Page1() {
       {data && <Table columns={columns} data={data} />}
     </div>
   );
-}
+};
 
 export default Page1;

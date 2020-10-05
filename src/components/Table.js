@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import { useTable, useFilters, useSortBy, usePagination } from "react-table";
 
 //Custom checkbox for picking the columns of the table

@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo } from "react";
 import Select from "./components/Select";
 import { operators } from "./resources/operators";
-import { clusters } from "./resources/clusters";
-import ToggleButton from "./components/ToggleButton";
+// import { clusters } from "./resources/clusters";
+// import ToggleButton from "./components/ToggleButton";
 import SubmitButton from "./components/SubmitButton";
 import ResetButton from "./components/ResetButton";
 import Table from "./components/Table";
@@ -40,11 +40,10 @@ const Page4 = () => {
   //   setCategoryOption(!categoryOption);
   // };
 
-  const submitHandler = (event) => {
-    event.preventDefault();
-    getData();
-    console.log(data);
-  };
+  // const submitHandler = (event) => {
+  //   event.preventDefault();
+  //   getData();
+  // };
 
   const getData = async () => {
     await fetch(
@@ -54,7 +53,6 @@ const Page4 = () => {
       .then(
         (result) => {
           setData(Object.values(result)[0]);
-          console.log(data);
           setDataLoaded(true);
         },
         (error) => {

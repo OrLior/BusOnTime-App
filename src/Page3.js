@@ -94,7 +94,6 @@ const Page3 = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     getData();
-    console.log(data);
   };
 
   const getData = async () => {
@@ -111,7 +110,6 @@ const Page3 = () => {
       .then(
         (result) => {
           setData(Object.values(result)[0]);
-          console.log(data);
           setDataLoaded(true);
         },
         (error) => {
@@ -133,7 +131,6 @@ const Page3 = () => {
 
   useEffect(() => {
     getData();
-    console.log(data);
   }, [categoryOption]);
 
   return (

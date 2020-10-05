@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import Select from "./Select";
 import { operators } from "../resources/operators";
 import { dates } from "../resources/dates";

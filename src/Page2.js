@@ -92,7 +92,6 @@ const Page2 = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     getData();
-    console.log(data);
   };
 
   const getData = async () => {
@@ -116,7 +115,6 @@ const Page2 = () => {
 
   useEffect(() => {
     getData();
-    console.log(data);
   }, [categoryOption]);
 
   return (
