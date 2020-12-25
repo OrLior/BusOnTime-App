@@ -7,7 +7,7 @@ import { operators } from "./resources/operators";
 import { clusters } from "./resources/clusters";
 import { dates } from "./resources/dates";
 
-const API_ADDRESS = "http://127.0.0.1:4999/";
+const API_ADDRESS = "https://busontime.herokuapp.com/";
 
 const Page2 = () => {
   const [date, setDate] = useState(null);
