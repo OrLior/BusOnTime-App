@@ -8,7 +8,7 @@ import ResetButton from "./components/ResetButton";
 import Table from "./components/Table";
 // import { dates } from "./resources/dates";
 
-const API_ADDRESS = "https://busontime.herokuapp.com/";
+const API_ADDRESS = "https://busontime-dev.herokuapp.com/";
 
 // THIS PAGE IS MEANT TO HAVE ADDITIONAL FEATURES FOR CHOOSING SPECIFIC CLUSTERS, LINES, AND DATES. SINCE THE API DOES NOT SUPPORT THE FULL QUERY YET
 // A LOT OF CODE IN THIS FILE IS THEREFORE COMMENTED OUT, AS THERE IS SUPPORT FROM THE FRONTEND TO ALLOW THESE FEATURES IN THE FUTURE.
