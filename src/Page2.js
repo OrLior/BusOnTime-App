@@ -6,8 +6,7 @@ import Table from "./components/Table";
 import { operators } from "./resources/operators";
 import { clusters } from "./resources/clusters";
 import { dates } from "./resources/dates";
-
-const API_ADDRESS = "http://127.0.0.1:4999/";
+import { API_ADDRESS } from "./resources/APIadress"
 
 const Page2 = () => {
   const [date, setDate] = useState(null);

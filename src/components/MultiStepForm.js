@@ -3,8 +3,7 @@ import Select from "./Select";
 import { operators } from "../resources/operators";
 import { dates } from "../resources/dates";
 import SubmitButton from "./SubmitButton";
-
-const API_ADDRESS = "http://127.0.0.1:4999/";
+import { API_ADDRESS } from "../resources/APIadress"
 
 const MultiStepForm = ({ setData, setDataLoaded, setDataError }) => {
   //Set up function states for all variables we need in the form

@@ -44,14 +44,14 @@ const Page1 = () => {
         Header: "Departed?",
         accessor: "departed",
         Cell: ({ cell: { value } }) => {
-          return <>{value ? "Yes" : "No"}</>;
+          return <div className="importantCell">{value ? "Yes" : "No"}</div>;
         },
       },
       {
         Header: "Departure Delay",
         accessor: "departure_delay",
         Cell: ({ cell: { value } }) => {
-          return <>{value >= 0 ? value + " mins" : "N/A"}</>;
+          return <div className="importantCell">{value >= 0 ? value + " mins" : "N/A"}</div>;
         },
       },
       {

@@ -7,8 +7,7 @@ import SubmitButton from "./components/SubmitButton";
 import ToggleButton from "./components/ToggleButton";
 import ResetButton from "./components/ResetButton";
 import Table from "./components/Table";
-
-const API_ADDRESS = "http://127.0.0.1:4999/";
+import { API_ADDRESS } from "./resources/APIadress"
 
 const Page3 = () => {
   const [date, setDate] = useState(null);

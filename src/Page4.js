@@ -7,8 +7,8 @@ import SubmitButton from "./components/SubmitButton";
 import ResetButton from "./components/ResetButton";
 import Table from "./components/Table";
 // import { dates } from "./resources/dates";
-
-const API_ADDRESS = "http://127.0.0.1:4999/";
+import InfoWindow from "./components/InfoWindow"
+import { API_ADDRESS } from "./resources/APIadress"
 
 // THIS PAGE IS MEANT TO HAVE ADDITIONAL FEATURES FOR CHOOSING SPECIFIC CLUSTERS, LINES, AND DATES. SINCE THE API DOES NOT SUPPORT THE FULL QUERY YET
 // A LOT OF CODE IN THIS FILE IS THEREFORE COMMENTED OUT, AS THERE IS SUPPORT FROM THE FRONTEND TO ALLOW THESE FEATURES IN THE FUTURE.
@@ -126,8 +126,14 @@ const Page4 = () => {
   //   // }, [operator, cluster]);
   // }, [operator]);
 
+  const [toggleInfo, setToggleInfo] = useState(true);
+  const toggleInfoWrap = () => {
+    setToggleInfo(!toggleInfo);
+  };
+
   return (
     <div>
+      {toggleInfo ? <InfoWindow toggle={toggleInfoWrap}/> : null}
       <form>
         <Select
           setSelected={setOperator}
