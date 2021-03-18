@@ -46,8 +46,9 @@ const Page4 = () => {
   // };
 
   const getData = async () => {
+    if (operator && operator !== "Operators") {
     await fetch(
-      `${API_ADDRESS}stats/delays/?oper=${operator ? operator : "all"}`
+      `${API_ADDRESS}stats/delays/?oper=${operator}`
     )
       .then((res) => res.json())
       .then(
@@ -59,6 +60,22 @@ const Page4 = () => {
           setDataError(error);
         }
       );
+    }
+    else {
+      await fetch(
+        `${API_ADDRESS}stats/delays/?oper=all`
+      )
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            setData(Object.values(result)[0]);
+            setDataLoaded(true);
+          },
+          (error) => {
+            setDataError(error);
+          }
+        );
+    }
   };
 
   const columns = useMemo(
