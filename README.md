@@ -1,68 +1,56 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+# BusOnTime 
+![BusOnTime](https://i.imgur.com/IRymGE8.jpg)    
+    
+#### BusOnTime project is a POC for Israel's public transport performance rating using public data analysis. Using both Scheduled data (Called GTFS) and past real-time GPS locations for buses (Called SIRI), we created the platform for analyzing all trips performance and publishing it to the users via rest API and a web app UI.    
+ ## Try it on https://purple-pond-0a34b4703.azurestaticapps.net/    
+---
+ ## :bus:  Current Available features:    
+ **At this stage, our analysis is made on the trips departures: Is a scheduled trip departed? If it's late, what is the departure delay in minutes? We can answer those questions**    
+- Search for a specific line data (all trips in selected days) and watch each trip departure verdict    
+     
+ - View general statistics - which operator tends to late more? Which lines are the best? and worst?    
+     
+ - See departure delays distribution by minutes (i.e. how many trips are late by 2 minutes?)    
+    
+- Available analyzed data: all trips made on selected 2 days - 2/8/20 and 3/8/20.  Updated data with much more days to select will be added soon.    
+    
+    
+## :clipboard: Data sources:
+ All raw data was taken from [The Public Knowledge Workshop (“HASADNA”)](https://www.hasadna.org.il/en/) In Israel, with the support of [Open-bus team](https://github.com/hasadna/open-bus). Their data is based on the public published data from [Israel's ministry of transportation.](https://www.gov.il/he/departments/general/real_time_information_siri)    
+      
+##  :rocket: Technologies:    
+ - Raw data analysis - Python [Pandas](https://pandas.pydata.org/) library and Jupyter notebooks    
+- API development- Python [Flask](https://flask.palletsprojects.com/) and [SQLAlchemy](https://www.sqlalchemy.org/) for database connection and modeling    
+- Web app (Uses the API): ReactJS    
+- #### For deployment:    
+ - API node is hosted on [Heroku dyno](https://www.heroku.com/dynos)    
+  - The Database is [AzureSQL](https://azure.microsoft.com/en-us/services/azure-sql/) (initially was on local sqlite, and later on postgres)    
+  - The Web app is deployed with [Azure static web apps service](https://azure.microsoft.com/en-us/services/app-service/static/)    
+    
+## :floppy_disk: Code    
+ - Data analysis and raw data - please contact me (Or) or Amit for more details    
+- API Backend - Available on [this repo](https://github.com/AmitGabbay/BusOnTime-API.git) 
+- Web app UI - This repository
+    
+    
+## :construction: Dev plan:    
+ :white_check_mark: Done:    
+- Initial plan and design    
+- Raw data analysis with pandas    
+- API & Web app development    
+- Initial deployment on small sample data    
+- Database migration from local sqlite to AzureSQL (also tested on PostgresSQL)     
+    
+:arrows_counterclockwise: In progress:    
+- Web app UI improvements    
+- Scaling from 2 days to 1 month data    
+    
+:white_circle: Planned:    
+ - Automatic data updating and analyzed data archive    
+- Major UI upgrade and more search and statistics features     
+    
+## :phone: For more information and docs:
+ ### Amit Gabbay (Data and API):     
+ [![GitHub](https://img.shields.io/badge/github%20-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white) ](https://github.com/AmitGabbay) [      ![Mail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white) ](mailto:amit.gabbay1@gmail.com) [![Linkedin](https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white) ](https://linkedin.com/in/amit-gabbay) 
+ ### Or Lior (Front end web app):    
+ [![GitHub](https://img.shields.io/badge/github%20-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white) ](https://github.com/OrLior) [      ![Mail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white) ](mailto:or.lior92@gmail.com ) [![Linkedin](https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white) ](https://www.linkedin.com/in/or-lior-7962b519b/)
